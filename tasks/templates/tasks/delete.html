@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<style>
+    body {
+        background-color: #333;
+    }
+
+    .center-column {
+        width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #CED3DC;
+        border-radius: 3px;
+        box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+        position: relative;
+        top: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .confirm-message {
+        margin-bottom: 20px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        align-content: stretch;
+        flex-wrap: wrap;
+     }
+
+    .buttons .btn {
+        margin-right: 10px;
+        color: #333;
+
+    }
+    .buttons .btn:hover {
+        color: #fff;
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-cancel {
+        background-color: #6BA3E8;
+        border-color: #6BA3E8;
+    }
+
+    .btn-confirm {
+        background-color: #ffae19;
+        border-color: #e59400;
+    }
+</style>
+
+<div class="center-column">
+    <div class="confirm-message">
+        <p>Are you sure you want to delete "{{ item }}"?</p>
+    </div>
+    <div class="buttons">
+        <a class="btn btn-info btn-cancel" href="{% url 'list' %}">Cancel</a>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input class="btn btn-danger btn-confirm" type="submit" name="Confirm" value="Confirmar">
+        </form>
+    </div>
+</div>
